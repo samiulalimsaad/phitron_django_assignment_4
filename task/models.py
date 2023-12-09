@@ -9,3 +9,6 @@ class TaskModel(models.Model):
     is_completed = models.BooleanField(default=False)
     taskAssignDate = models.DateField()
     categories = models.ManyToManyField(TaskCategory)
+
+    def __str__(self):
+        return self.task.title
