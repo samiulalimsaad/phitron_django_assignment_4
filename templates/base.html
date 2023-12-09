@@ -1,0 +1,41 @@
+{% load tailwind_filters %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            {% block title %} Task Management System{% endblock title %}
+        </title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <div id="navbar" class="bg-gray-800 p-4">
+            <ul class="flex">
+                <li class="mr-4">
+                    <a href="{% url 'add_task' %}" class="text-white"
+                        >Add Task</a
+                    >
+                </li>
+                <li class="mr-4">
+                    <a href="{% url 'add_category' %}" class="text-white"
+                        >Add Category</a
+                    >
+                </li>
+                <li>
+                    <a href="{% url 'show_tasks' %}" class="text-white"
+                        >Show Tasks</a
+                    >
+                </li>
+            </ul>
+        </div>
+        <div id="content" class="container mx-auto mt-4">
+            {% block content %}{% endblock content %}
+        </div>
+    </body>
+</html>
