@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% block title %}Show Tasks{% endblock %} {%block
-content %}
+{% extends 'base.html' %} {% block title %}Show Tasks{% endblock title %}
+{%block content %}
 <h2 class="text-3xl font-bold mb-4">Show Tasks</h2>
 {% for task in tasks %}
 <div class="bg-white p-6 rounded-md shadow-md mb-4">
@@ -10,8 +10,22 @@ content %}
     {% if task.is_completed %}
     <p class="text-green-500">Completed</p>
     {% else %}
-    <button class="bg-blue-500 text-white px-4 py-2 rounded mt-2">Edit</button>
-    <button class="bg-red-500 text-white px-4 py-2 rounded mt-2">Delete</button>
+    <div class="mt-2 flex">
+        <a
+            href="{% url 'edit_task' task.id %}"
+            class="bg-blue-500 text-white px-4 py-2 rounded mr-2"
+            >Edit</a
+        >
+        <form action="{% url 'delete_task' task.id %}" method="post">
+            {% csrf_token %}
+            <button
+                type="submit"
+                class="bg-red-500 text-white px-4 py-2 rounded"
+            >
+                Delete
+            </button>
+        </form>
+    </div>
     {% endif %}
 </div>
 {% endfor %} {% endblock content %}
