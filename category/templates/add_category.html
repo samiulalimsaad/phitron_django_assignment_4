@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block title %}Add Category{% endblock title %}
-{%block content %}
+{%load tailwind_filters %} {%block content %}
 <h2 class="text-3xl font-bold mb-4">Add Category</h2>
 <form method="post" class="max-w-md bg-white p-6 rounded-md shadow-md">
     {% csrf_token %} {{ form|crispy }}
