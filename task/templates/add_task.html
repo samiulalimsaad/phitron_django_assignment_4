@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% block title %}Add Task{% endblock %} {%block
-content %}
+{% extends 'base.html' %} {% load tailwind_filters %} {% block title %}Add
+Task{% endblock title %} {%block content %}
 <h2 class="text-2xl font-bold mb-4">Add Task</h2>
 <form method="post" class="max-w-md">
     {% csrf_token %} {{ form|crispy }}
