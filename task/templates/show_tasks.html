@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block title %}Show Tasks{% endblock %} {%block
+content %}
+<h2 class="text-3xl font-bold mb-4">Show Tasks</h2>
+{% for task in tasks %}
+<div class="bg-white p-6 rounded-md shadow-md mb-4">
+    <h3 class="text-xl font-bold">{{ task.taskTitle }}</h3>
+    <p class="text-gray-600">{{ task.taskDescription }}</p>
+    <p class="text-gray-600">Assigned Date: {{ task.taskAssignDate }}</p>
+    <p class="text-gray-600">Categories: {{ task.categories.all|join:", " }}</p>
+    {% if task.is_completed %}
+    <p class="text-green-500">Completed</p>
+    {% else %}
+    <button class="bg-blue-500 text-white px-4 py-2 rounded mt-2">Edit</button>
+    <button class="bg-red-500 text-white px-4 py-2 rounded mt-2">Delete</button>
+    {% endif %}
+</div>
+{% endfor %} {% endblock content %}
